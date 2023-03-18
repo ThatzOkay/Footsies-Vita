@@ -12,7 +12,6 @@ namespace Footsies
         {
             LoadVsCPU,
             LoadVsPlayer,
-            ExitGame,
             BGMToggle,
             SEToggle,
         }
@@ -41,9 +40,6 @@ namespace Footsies
                 case Action.LoadVsPlayer:
                     LoadVsPlayer();
                     break;
-                case Action.ExitGame:
-                    ExitGame();
-                    break;
                 case Action.BGMToggle:
                     toggleBGM();
                     break;
@@ -60,11 +56,6 @@ namespace Footsies
         public void LoadVsPlayer()
         {
             GameManager.Instance.LoadVsPlayerScene();
-        }
-
-        public void ExitGame()
-        {
-            Application.Quit();
         }
 
         public void toggleBGM()

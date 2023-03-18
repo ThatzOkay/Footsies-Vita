@@ -304,9 +304,17 @@ namespace Footsies
             var time = Time.fixedTime - roundStartTime;
 
             InputData p1Input = new InputData();
-            p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.p1Left) ? (int)InputDefine.Left : 0;
-            p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.p1Right) ? (int)InputDefine.Right : 0;
-            p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.p1Attack) ? (int)InputDefine.Attack : 0;
+
+            if(battleAI != null)
+            {
+                p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.vsAiLeft) ? (int)InputDefine.Left : 0;
+                p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.vsAiRight) ? (int)InputDefine.Right : 0;
+                p1Input.input |= InputManager.Instance.GetButton(InputManager.Command.vsAiAttack) ? (int)InputDefine.Attack : 0;
+            }
+            else
+            {
+
+            }
             p1Input.time = time;
 
             if (debugP1Attack)
@@ -351,7 +359,7 @@ namespace Footsies
 
         private bool IsKOSkipButtonPressed()
         {
-            if (InputManager.Instance.GetButton(InputManager.Command.p1Attack))
+            if (InputManager.Instance.GetButton(InputManager.Command.vsAiAttack))
                 return true;
 
             if (InputManager.Instance.GetButton(InputManager.Command.p2Attack))
